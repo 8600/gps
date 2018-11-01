@@ -10,7 +10,7 @@ app = Flask(__name__)
 def index(ip):
   if (ip):
     # 打开数据库连接
-    # db = MySQLdb.connect(host="192.168.0.226",user="root",passwd="GwlF97#6",db="gps",charset="utf8")
+    db = MySQLdb.connect(host="192.168.0.226",user="root",passwd="GwlF97#6",db="gps",charset="utf8")
     # # 使用cursor()方法获取操作游标 
     # cursor = db.cursor()
 
