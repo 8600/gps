@@ -7,7 +7,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 # 打开数据库连接
-db = MySQLdb.connect("192.168.0.226", "location", "root", "GwlF97#6", charset='utf8' )
+db = MySQLdb.connect(host="192.168.0.226:3306",user="root",passwd="GwlF97#6",db="gps",charset="utf8")
 
 # 使用cursor()方法获取操作游标 
 cursor = db.cursor()
@@ -34,6 +34,13 @@ def index(ip):
     res = requests.get('https://www.maxmind.com/geoip/v2.1/city/'+ ip +'?use-downloadable-db=1&demo=1' , headers = headers)
     res.encoding = 'utf-8'
     print(res.json())
+    # gps = subString(res.json, 'target="_blank">', "</a>").split(",")
+    # returnData = {
+    #   "ip": subString(res.text, '<span class="fcr">', "</span>"),
+    #   "position": subString(res.text, '<span class="fcg">', "</span><br />"),
+    #   "longitude": gps[0],
+    #   "latitude": gps[1]
+    # }
     return res.text
   return ''
   
